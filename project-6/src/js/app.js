@@ -5,7 +5,6 @@ App = {
     upc: 0,
     metamaskAccountID: "0x0000000000000000000000000000000000000000",
     ownerID: "0x0000000000000000000000000000000000000000",
-    originFarmerID: "0x0000000000000000000000000000000000000000",
     newFarmerId: "0x0000000000000000000000000000000000000000",
     originFarmName: null,
     originFarmInformation: null,
@@ -13,11 +12,8 @@ App = {
     originFarmLongitude: null,
     productNotes: null,
     productPrice: 0,
-    distributorID: "0x0000000000000000000000000000000000000000",
     newDistributorId: "0x0000000000000000000000000000000000000000",
-    retailerID: "0x0000000000000000000000000000000000000000",
     newRetailerId: "0x0000000000000000000000000000000000000000",
-    consumerID: "0x0000000000000000000000000000000000000000",
     newConsumerId: "0x0000000000000000000000000000000000000000",
 
     init: async function () {
@@ -29,7 +25,6 @@ App = {
     readForm: function () {
         App.upc = $("#upc").val();
         App.ownerID = $("#ownerID").val();
-        App.originFarmerID = $("#originFarmerID").val();
         App.newFarmerId = $("#newFarmerId").val();
         App.originFarmName = $("#originFarmName").val();
         App.originFarmInformation = $("#originFarmInformation").val();
@@ -37,11 +32,8 @@ App = {
         App.originFarmLongitude = $("#originFarmLongitude").val();
         App.productNotes = $("#productNotes").val();
         App.productPrice = $("#productPrice").val();
-        App.distributorID = $("#distributorID").val();
         App.newDistributorId = $("#newDistributorId").val();
-        App.retailerID = $("#retailerID").val();
         App.newRetailerId = $("#newRetailerId").val();
-        App.consumerID = $("#consumerID").val();
         App.newConsumerId = $("#newConsumerId").val();
 
         console.log(App);
@@ -173,7 +165,7 @@ App = {
         const supplyChain = await App.contracts.SupplyChain.deployed();
 
         try {
-            let result = await supplyChain.addFarmer(App.newFarmerId, { from: App.metamaskAccountID });
+            let result = await supplyChain.addFarmer(App.newFarmerId, { from: App.metamaskAccountID, gas: 250000 });
             $("#ftc-item").text(result);
             console.log('addFarmer', result);
         } catch (err) {
@@ -187,7 +179,7 @@ App = {
         const supplyChain = await App.contracts.SupplyChain.deployed();
         
         try {
-            let result = await supplyChain.addDistributor(App.newDistributorId, { from: App.metamaskAccountID });
+            let result = await supplyChain.addDistributor(App.newDistributorId, { from: App.metamaskAccountID, gas: 250000 });
             $("#ftc-item").text(result);
             console.log('addDistributor', result);
         } catch (err) {
@@ -201,7 +193,7 @@ App = {
         const supplyChain = await App.contracts.SupplyChain.deployed();
 
         try {
-            let result = await supplyChain.addRetailer(App.newRetailerId, { from: App.metamaskAccountID });
+            let result = await supplyChain.addRetailer(App.newRetailerId, { from: App.metamaskAccountID, gas: 250000 });
             $("#ftc-item").text(result);
             console.log('addRetailer', result);
         } catch (err) {
@@ -215,7 +207,7 @@ App = {
         const supplyChain = await App.contracts.SupplyChain.deployed();
 
         try {
-            let result = await supplyChain.addConsumer(App.newConsumerId, { from: App.metamaskAccountID });
+            let result = await supplyChain.addConsumer(App.newConsumerId, { from: App.metamaskAccountID, gas: 250000 });
             $("#ftc-item").text(result);
             console.log('addConsumer', result);
         } catch (err) {
