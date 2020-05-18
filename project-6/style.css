@@ -64,3 +64,34 @@ button {
 .horizontal-rule {
   background-color:#BDBDBD;
 }
+
+/* Style the form - display items horizontally */
+.input-group {
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+}
+
+/* Style the input fields */
+.input-group input {
+  vertical-align: middle;
+  margin: 5px 10px 5px 0;
+  padding: 10px;
+}
+
+/* Style the submit button */
+.input-group button {
+  padding: 10px 20px;
+}
+
+/* Add responsiveness - display the form controls vertically instead of horizontally on screens that are less than 800px wide */
+@media (max-width: 800px) {
+  .input-group input {
+    margin: 10px 0;
+  }
+
+  .input-group {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}

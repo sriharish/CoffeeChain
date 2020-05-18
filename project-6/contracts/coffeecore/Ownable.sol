@@ -1,15 +1,14 @@
 pragma solidity ^0.5.12;
-import "../coffeebase/SupplyChain.sol";
 
 /// Provides basic authorization control
-contract Ownable is SupplyChain {
+contract Ownable {
     address payable private origOwner;
 
     // Define an Event
     event TransferOwnership(address indexed oldOwner, address indexed newOwner);
 
     /// Assign the contract to an owner
-    constructor () public payable {
+    constructor () internal {
         origOwner = msg.sender;
         emit TransferOwnership(address(0), origOwner);
     }
