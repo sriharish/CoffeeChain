@@ -10,18 +10,11 @@ contract SupplyChain is Ownable, ConsumerRole, DistributorRole, FarmerRole, Reta
 
   // address payable owner;
 
-  // Define a variable called 'upc' for Universal Product Code (UPC)
-  uint  upc;
-
   // Define a variable called 'sku' for Stock Keeping Unit (SKU)
   uint  sku;
 
   // Define a public mapping 'items' that maps the UPC to an Item.
   mapping (uint => Item) items;
-
-  // Define a public mapping 'itemsHistory' that maps the UPC to an array of TxHash,
-  // that track its journey through the supply chain -- to be sent from DApp.
-  mapping (uint => string[]) itemsHistory;
 
   // Define enum 'State' with the following values:
   enum State
@@ -66,13 +59,6 @@ contract SupplyChain is Ownable, ConsumerRole, DistributorRole, FarmerRole, Reta
   event Shipped(uint upc);
   event Received(uint upc);
   event Purchased(uint upc);
-
-  // Define a modifer that checks to see if msg.sender == owner of the contract
-  // Define in Ownable
-  // modifier onlyOwner() {
-  //   require(msg.sender == owner, 'ACCESS DENIED');
-  //   _;
-  // }
 
   // Define a modifer that verifies the Caller
   modifier verifyCaller (address _address) {
@@ -149,16 +135,7 @@ contract SupplyChain is Ownable, ConsumerRole, DistributorRole, FarmerRole, Reta
   constructor() public {
     // origOwner = msg.sender;
     sku = 1;
-    upc = 1;
   }
-
-  // Define a function 'kill' if required
-  // Defined in Ownable
-  // function kill() public {
-  //   if (msg.sender == owner) {
-  //     selfdestruct(owner);
-  //   }
-  // }
 
   // Define a function 'harvestItem' that allows a farmer to mark an item 'Harvested'
   function harvestItem(uint _upc,

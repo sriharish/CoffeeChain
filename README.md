@@ -45,7 +45,7 @@ npm install
 Launch Ganache:
 
 ```
-ganache-cli -m "spirit supply whale amount human item harsh scare congress discover talent hamster"
+ganache-cli -m "spirit supply whale amount human item harsh scare congress discover talent hamster" -l 9999999
 ```
 
 Your terminal should look something like this:
